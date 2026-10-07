@@ -1,0 +1,281 @@
+/* WorkFinder: grafito, papel cálido y cobre. Sin fuentes ni imágenes remotas. */
+.workfinder-root {
+    -wf-background: #191b1b;
+    -wf-surface: #1e2121;
+    -wf-raised: #2a2e2d;
+    -wf-border: #454b47;
+    -wf-text: #f0eadf;
+    -wf-muted: #b5b8ae;
+    -wf-accent: #e9b17c;
+    -wf-selection: #46594f;
+    -wf-danger: #edaaa1;
+    -fx-base: -wf-surface;
+    -fx-background: -wf-background;
+    -fx-control-inner-background: -wf-background;
+    -fx-accent: -wf-accent;
+    -fx-focus-color: -wf-accent;
+    -fx-faint-focus-color: transparent;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+    -fx-background-color: -wf-background;
+}
+.label { -fx-text-fill: -wf-text; }
+.header {
+    -fx-padding: 20 32;
+    -fx-border-color: transparent transparent -wf-border transparent;
+}
+.brand-mark {
+    -fx-fill: transparent;
+    -fx-stroke: -wf-accent;
+    -fx-stroke-width: 2;
+    -fx-stroke-line-cap: round;
+    -fx-stroke-line-join: round;
+}
+.app-title { -fx-font-size: 25px; -fx-font-weight: bold; }
+.header-caption { -fx-text-fill: -wf-accent; -fx-font-size: 12px; }
+.brand-subtitle { -fx-text-fill: -wf-muted; -fx-font-size: 12px; }
+.muted-text, .status-text { -fx-text-fill: -wf-muted; -fx-font-size: 13px; }
+.workspace { -fx-background-color: transparent; -fx-padding: 24 32 16 32; }
+.split-pane > .split-pane-divider {
+    -fx-background-color: transparent;
+    -fx-padding: 0 12;
+}
+.split-pane > .split-pane-divider:hover { -fx-background-color: -wf-raised; }
+.panel { -fx-background-color: transparent; -fx-padding: 0; }
+.section-title {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 32px;
+    -fx-font-weight: normal;
+}
+.pending-text { -fx-text-fill: -wf-muted; -fx-font-size: 12px; }
+.table-view {
+    -fx-background-color: -wf-surface;
+    -fx-border-color: -wf-border;
+    -fx-border-radius: 0;
+    -fx-padding: 1;
+    -fx-table-cell-border-color: -wf-border;
+}
+.table-view:focused { -fx-border-color: -wf-accent; }
+.table-view .column-header-background, .table-view .column-header, .table-view .filler {
+    -fx-background-color: -wf-raised;
+}
+.table-view .column-header {
+    -fx-size: 42px;
+    -fx-border-color: transparent transparent -wf-border transparent;
+}
+.table-view .column-header .label {
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 8;
+    -fx-font-size: 12px;
+    -fx-font-weight: normal;
+    -fx-text-fill: -wf-muted;
+}
+.table-row-cell { -fx-background-color: -wf-surface; -fx-cell-size: 44px; }
+.table-row-cell:odd { -fx-background-color: -wf-background; }
+.table-row-cell:empty { -fx-background-color: -wf-surface; }
+.table-row-cell:filled:hover { -fx-background-color: -wf-raised; }
+.table-row-cell:filled:selected { -fx-background-color: -wf-selection; }
+.table-row-cell:filled:selected .table-cell { -fx-text-fill: -wf-text; }
+.table-cell { -fx-text-fill: -wf-text; -fx-padding: 10 12; -fx-alignment: CENTER_LEFT; }
+.table-row-cell:empty .table-cell { -fx-border-color: transparent; }
+.empty-state { -fx-padding: 36 28; }
+.empty-title { -fx-font-family: "Georgia"; -fx-font-size: 24px; }
+.notebook-sheet {
+    -fx-fill: transparent;
+    -fx-stroke: #8b948c;
+    -fx-stroke-width: 1.4;
+    -fx-stroke-line-join: round;
+    -fx-stroke-line-cap: round;
+}
+.notebook-accent {
+    -fx-fill: transparent;
+    -fx-stroke: -wf-accent;
+    -fx-stroke-width: 1.8;
+    -fx-stroke-line-join: round;
+    -fx-stroke-line-cap: round;
+}
+.button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 3;
+    -fx-border-color: -wf-border;
+    -fx-border-radius: 3;
+    -fx-padding: 10 16;
+    -fx-text-fill: -wf-text;
+    -fx-cursor: hand;
+}
+.button:hover { -fx-background-color: -wf-raised; }
+.button:focused { -fx-border-color: -wf-accent; -fx-border-width: 2; -fx-padding: 9 15; }
+.button:pressed { -fx-background-color: -wf-background; }
+.button:disabled { -fx-opacity: 0.72; -fx-cursor: default; }
+.primary-button { -fx-background-color: -wf-accent; -fx-text-fill: -wf-background; -fx-border-color: -wf-accent; -fx-font-weight: bold; }
+.primary-button:hover { -fx-background-color: #f5c496; }
+.danger-button { -fx-text-fill: -wf-danger; }
+.search-button {
+    -fx-min-width: 36;
+    -fx-pref-width: 36;
+    -fx-max-width: 36;
+    -fx-min-height: 36;
+    -fx-pref-height: 36;
+    -fx-max-height: 36;
+    -fx-padding: 7;
+}
+.search-button:focused { -fx-padding: 6; }
+.search-icon {
+    -fx-fill: transparent;
+    -fx-stroke: -wf-accent;
+    -fx-stroke-width: 1.8;
+    -fx-stroke-line-cap: round;
+}
+.actions {
+    -fx-padding: 16 0 0 0;
+    -fx-border-color: -wf-border transparent transparent transparent;
+}
+.summary-scroll, .summary-scroll > .viewport { -fx-background-color: transparent; }
+.summary-scroll { -fx-padding: 0; -fx-background-insets: 0; }
+.summary-panel {
+    -fx-padding: 0 0 8 22;
+    -fx-border-color: transparent transparent transparent -wf-border;
+}
+.summary-total { -fx-padding: 2 0 4 0; }
+.summary-section { -fx-padding: 2 0; }
+.card-title { -fx-font-size: 14px; -fx-font-weight: bold; }
+.metric-value { -fx-font-family: "Georgia"; -fx-font-size: 58px; -fx-text-fill: -wf-accent; }
+.separator .line { -fx-border-color: -wf-border; -fx-border-width: 1 0 0 0; }
+.scroll-bar { -fx-background-color: -wf-background; }
+.scroll-bar .thumb { -fx-background-color: -wf-border; -fx-background-radius: 3; }
+.scroll-bar .thumb:hover { -fx-background-color: -wf-muted; }
+.scroll-bar .increment-button, .scroll-bar .decrement-button { -fx-background-color: transparent; }
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow { -fx-background-color: -wf-muted; }
+.tooltip { -fx-background-color: -wf-raised; -fx-text-fill: -wf-text; -fx-padding: 10; }
+.footer { -fx-padding: 12 32 18 32; }
+.status-text { -fx-font-size: 12px; }
+
+/* Formulario de la fase 2, con errores junto a los campos. */
+.candidatura-form { -fx-background-color: -wf-surface; -fx-border-color: -wf-border; -fx-padding: 18; }
+.form-scroll, .form-scroll > .viewport { -fx-background-color: transparent; }
+.form-scroll { -fx-padding: 0 8 0 0; -fx-background-insets: 0; }
+.form-actions { -fx-padding: 16 0 0 0; }
+.field-label { -fx-font-size: 12px; -fx-text-fill: -wf-muted; }
+.text-field, .text-area, .combo-box {
+    -fx-background-color: -wf-background;
+    -fx-background-radius: 3;
+    -fx-border-color: -wf-border;
+    -fx-border-radius: 3;
+    -fx-text-fill: -wf-text;
+    -fx-prompt-text-fill: -wf-muted;
+}
+.text-field { -fx-padding: 9 10; }
+.text-area .content { -fx-background-color: -wf-background; }
+.text-area { -fx-highlight-fill: -wf-selection; -fx-highlight-text-fill: -wf-text; }
+.combo-box { -fx-padding: 4; }
+.combo-box .list-cell, .combo-box-popup .list-view .list-cell {
+    -fx-background-color: -wf-background;
+    -fx-text-fill: -wf-text;
+}
+.combo-box-popup .list-view .list-cell:filled:hover,
+.combo-box-popup .list-view .list-cell:filled:selected { -fx-background-color: -wf-selection; }
+.text-field:focused, .text-area:focused, .combo-box:focused { -fx-border-color: -wf-accent; }
+.text-field:invalid, .text-area:invalid, .combo-box:invalid { -fx-border-color: -wf-danger; }
+.field-error, .error-message { -fx-text-fill: -wf-danger; }
+.field-error { -fx-font-size: 12px; }
+.operation-message { -fx-padding: 10 12; -fx-background-color: -wf-raised; }
+.check-box { -fx-text-fill: -wf-text; }
+.check-box .box { -fx-background-color: -wf-background; -fx-border-color: -wf-border; -fx-border-radius: 2; }
+.check-box:selected .mark { -fx-background-color: -wf-accent; }
+.check-box:focused .box { -fx-border-color: -wf-accent; }
+.dialog-pane { -fx-background-color: -wf-background; }
+.dialog-pane > .header-panel { -fx-background-color: -wf-surface; }
+
+/* Estados: señales de color locales, conservando grafito, crema y cobre. */
+.table-cell.state-cell { -fx-padding: 6; }
+.state-picker, .state-option, .summary-state, .state-pie .chart-pie { -wf-state: #b5b8ae; }
+.state-picker:enviada, .state-option:enviada, .summary-state:enviada, .state-pie .chart-pie:enviada { -wf-state: #9bcfa8; }
+.state-picker:en-proceso, .state-option:en-proceso, .summary-state:en-proceso, .state-pie .chart-pie:en-proceso { -wf-state: #e5ca78; }
+.state-picker:rechazada, .state-option:rechazada, .summary-state:rechazada, .state-pie .chart-pie:rechazada { -wf-state: #edaaa1; }
+.state-picker:entrevista, .state-option:entrevista, .summary-state:entrevista, .state-pie .chart-pie:entrevista { -wf-state: #e9b17c; }
+.state-picker:oferta, .state-option:oferta, .summary-state:oferta, .state-pie .chart-pie:oferta { -wf-state: #93d3c6; }
+.state-picker:retirada, .state-option:retirada, .summary-state:retirada, .state-pie .chart-pie:retirada { -wf-state: #b5b8ae; }
+.combo-box.state-picker {
+    -fx-padding: 0;
+    -fx-font-size: 12px;
+    -fx-background-color: derive(-wf-state, -80%);
+    -fx-border-color: derive(-wf-state, -55%);
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+.combo-box.state-picker:hover { -fx-background-color: derive(-wf-state, -73%); }
+.combo-box.state-picker:focused, .combo-box.state-picker:showing { -fx-border-color: -wf-accent; }
+.combo-box.state-picker .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -wf-state;
+    -fx-padding: 4 6;
+}
+.combo-box.state-picker .arrow-button { -fx-padding: 0 6; }
+.combo-box.state-picker .arrow { -fx-background-color: -wf-state; }
+.combo-box-popup .list-view .list-cell.state-option {
+    -fx-text-fill: -wf-state;
+    -fx-font-size: 12px;
+    -fx-padding: 8 10;
+}
+
+/* Panel desplegable: solo ocupa espacio al abrir la lupa. */
+.search-panel {
+    -fx-background-color: -wf-surface;
+    -fx-border-color: -wf-border;
+    -fx-padding: 12;
+}
+.search-panel .text-field { -fx-padding: 7 10; }
+.search-panel .combo-box { -fx-font-size: 12px; -fx-padding: 2; }
+.search-panel .combo-box .list-cell { -fx-padding: 6; }
+.search-button:filters-active, .search-button:expanded {
+    -fx-border-color: -wf-accent;
+    -fx-background-color: -wf-raised;
+}
+
+/* Resumen: recuentos y barras horizontales con nombres completos. */
+.summary-state .state-name { -fx-text-fill: -wf-state; -fx-font-size: 12px; }
+.summary-count { -fx-text-fill: -wf-text; -fx-font-size: 13px; -fx-font-weight: bold; }
+.category-label { -fx-font-size: 12px; -fx-text-fill: -wf-muted; }
+.category-track {
+    -fx-background-color: -wf-raised;
+    -fx-background-radius: 2;
+    -fx-min-height: 7;
+    -fx-pref-height: 7;
+    -fx-max-height: 7;
+}
+/* Categorías: tonos suaves estables, independientes de los colores por estado. */
+.summary-category { -wf-category: #c7baa4; }
+.summary-category:desarrollo-software { -wf-category: #e9b17c; }
+.summary-category:datos { -wf-category: #93c7bd; }
+.summary-category:sistemas-redes { -wf-category: #94b4c6; }
+.summary-category:diseno { -wf-category: #b5a5c7; }
+.summary-category:marketing-comunicacion { -wf-category: #d19fad; }
+.summary-category:administracion { -wf-category: #b6be91; }
+.summary-category:otras { -wf-category: #c7baa4; }
+.summary-category .category-label { -fx-text-fill: -wf-category; }
+.summary-category .category-fill { -fx-background-color: -wf-category; -fx-background-radius: 2; }
+#resumen-escala { -fx-font-size: 11px; }
+
+.summary-total .metric-value { -fx-font-size: 48px; }
+
+/* Distribución por estado: los mismos colores semánticos que la tabla. */
+.state-pie { -fx-padding: 0; -fx-background-color: transparent; }
+.state-pie .chart-content { -fx-padding: 0; }
+.state-pie .chart-pie {
+    -fx-background-color: -wf-state;
+    -fx-border-color: -wf-background;
+    -fx-border-width: 1;
+}
+.state-pie .chart-pie:hover { -fx-opacity: 0.8; }
+.state-pie .chart-pie:focused { -fx-border-color: -wf-text; -fx-border-width: 2; }
+.state-pie-placeholder {
+    -fx-text-fill: -wf-muted;
+    -fx-font-size: 12px;
+    -fx-border-color: -wf-border;
+    -fx-border-radius: 100;
+    -fx-padding: 10;
+}
+/* Reflejo discreto: recorre solo las barras con el máximo, sin alterar su color ni escala. */
+.category-flow {
+    -fx-background-color: linear-gradient(to right, transparent 0%, rgba(255, 249, 234, 0.12) 25%, rgba(255, 249, 234, 0.48) 50%, rgba(255, 249, 234, 0.12) 75%, transparent 100%);
+}
