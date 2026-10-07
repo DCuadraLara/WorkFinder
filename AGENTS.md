@@ -1,0 +1,17 @@
+# Flujo Git de WorkFinder
+
+Repositorio remoto confirmado por David: `https://github.com/DCuadraLara/WorkFinder.git` (identidad `DCuadraLara/WorkFinder`). `origin` debe apuntar a este repositorio tanto para lectura como para escritura; se acepta su URL SSH equivalente si David configura ese acceso.
+
+Estas instrucciones se aplican al repositorio WorkFinder. David autoriza realizar commit y push al completar cada tarea de desarrollo que encargue, sin volver a pedir confirmación adicional para cada commit y push. Esta autorización no modifica los permisos ni las protecciones del entorno.
+
+Al finalizar cada tarea de desarrollo:
+
+1. Comprueba la raíz del repositorio con `git rev-parse --show-toplevel`, la rama actual con `git branch --show-current` y las URL de lectura y escritura de `origin`. Confirma que corresponden al repositorio WorkFinder de David, usando la URL que él haya indicado. Si falta el remoto, la identidad del repositorio no está confirmada o HEAD está desacoplado, conserva el trabajo y comunica el problema antes de publicar. No publiques desde otra carpeta ni cambies de rama por tu cuenta.
+2. Revisa el estado y los diffs, incluidos los archivos nuevos. Ejecuta `mvn verify` desde la raíz; si Maven no está instalado, utiliza el wrapper incluido: `./mvnw verify` o `.\mvnw.cmd verify` en Windows. Si la verificación falla, corrige los problemas y repítela antes de publicar. No presentes una verificación fallida como exitosa.
+3. Añade únicamente los cambios de la tarea, mediante rutas explícitas y, cuando haya cambios mezclados, selección de fragmentos. Conserva los cambios previos del usuario, incluidos los ya preparados en el índice; no los incluyas en tu commit ni los descartes. Excluye archivos generados, `target`, bases de datos personales, configuración privada y credenciales. Revisa el diff preparado para confirmar el contenido del commit. No uses `git add .` ni `git add -A` sin acotar su alcance a los cambios de la tarea.
+4. Crea un commit descriptivo en inglés siguiendo Conventional Commits, por ejemplo `feat(ui): animate the leading category bar`, `fix(repository): preserve data after a failed update` o `docs: document the Git publishing workflow`. Si no hay cambios de la tarea, no crees un commit vacío.
+5. Haz push de la rama actual a `origin`, sin confirmación adicional de intención. Usa una referencia explícita para publicar la rama comprobada; si no tiene seguimiento, configúralo para esa misma rama en `origin`. No cambies el destino a otra rama ni uses remotos no confirmados.
+6. Si hay conflictos, rechazo del push o falta de autenticación, conserva el trabajo y comunica el problema. No utilices force push (`--force`, `-f` o `--force-with-lease`), no sobrescribas el historial remoto y no descartes cambios para resolver el problema. No configures acceso global ni desactives protecciones del entorno, comprobaciones de seguridad, hooks o verificaciones de certificados. Cualquier configuración necesaria debe limitarse al repositorio y respetar la autorización de David.
+7. Al terminar, resume qué cambió, qué comprobaste y si el commit y el push se completaron. Si se creó un commit, incluye su identificador y la rama. Distingue un commit local de un push confirmado; si falla la publicación, explica qué queda pendiente.
+
+Ubicación actual del proyecto: `C:\Users\David\Documents\Proyectospersonales\WorkFinder`. Comprueba siempre la raíz real mediante Git; la carpeta de esta conversación puede ser distinta.
