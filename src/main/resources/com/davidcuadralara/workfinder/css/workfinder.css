@@ -70,13 +70,13 @@
     -fx-font-weight: normal;
     -fx-text-fill: -wf-muted;
 }
-.table-row-cell { -fx-background-color: -wf-surface; -fx-cell-size: 44px; }
+.table-row-cell { -fx-background-color: -wf-surface; -fx-cell-size: 56px; }
 .table-row-cell:odd { -fx-background-color: -wf-background; }
 .table-row-cell:empty { -fx-background-color: -wf-surface; }
 .table-row-cell:filled:hover { -fx-background-color: -wf-raised; }
 .table-row-cell:filled:selected { -fx-background-color: -wf-selection; }
 .table-row-cell:filled:selected .table-cell { -fx-text-fill: -wf-text; }
-.table-cell { -fx-text-fill: -wf-text; -fx-padding: 10 12; -fx-alignment: CENTER_LEFT; }
+.table-cell { -fx-text-fill: -wf-text; -fx-padding: 8 12; -fx-alignment: CENTER_LEFT; }
 .table-row-cell:empty .table-cell { -fx-border-color: transparent; }
 .empty-state { -fx-padding: 36 28; }
 .empty-title { -fx-font-family: "Georgia"; -fx-font-size: 24px; }

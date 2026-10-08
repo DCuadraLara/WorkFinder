@@ -12,7 +12,7 @@ Aplicación de escritorio para organizar candidaturas a prácticas y empleo, des
 - Consultar el total de candidaturas, su distribución por estado y las barras por categoría.
 - Conservar los datos entre sesiones mediante SQLite, sin depender de un servidor externo.
 
-Cada fila representa **una candidatura**. Puedes registrar varias para una misma empresa o puesto; cada una conserva su identificador y sus datos.
+Cada fila representa **una candidatura**. Puedes registrar varias para una misma empresa o puesto; cada una conserva su identificador y sus datos. Las columnas de puesto y categoría admiten dos líneas para facilitar la lectura; los tooltips permiten consultar el contenido completo de las celdas.
 
 ## Capturas
 

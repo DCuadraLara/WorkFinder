@@ -261,8 +261,8 @@ public final class MainView {
         table.setEditable(false);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.getColumns().add(column("Empresa", 165, Candidatura::getEmpresa));
-        table.getColumns().add(column("Puesto", 190, Candidatura::getPuesto));
-        table.getColumns().add(column("Categoría", 150, c -> c.getCategoria().toString()));
+        table.getColumns().add(column("Puesto", 190, true, Candidatura::getPuesto));
+        table.getColumns().add(column("Categoría", 150, true, c -> c.getCategoria().toString()));
         TableColumn<Candidatura, EstadoCandidatura> stateColumn = new TableColumn<>("Estado");
         stateColumn.setPrefWidth(150);
         stateColumn.setMinWidth(130);
@@ -304,6 +304,10 @@ public final class MainView {
     }
 
     private TableColumn<Candidatura, String> column(String title, double width, Function<Candidatura, String> value) {
+        return column(title, width, false, value);
+    }
+
+    private TableColumn<Candidatura, String> column(String title, double width, boolean wrap, Function<Candidatura, String> value) {
         TableColumn<Candidatura, String> column = new TableColumn<>(title);
         column.setPrefWidth(width);
         column.setMinWidth(80);
@@ -313,6 +317,7 @@ public final class MainView {
         column.setCellFactory(ignored -> new TableCell<>() {
             @Override protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
+                setWrapText(wrap);
                 setText(empty ? null : item);
                 setTooltip(empty || item == null || item.isBlank() ? null : new Tooltip(item));
             }
