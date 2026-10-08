@@ -1,7 +1,5 @@
-# Maven y comprobaciones locales
+# Maven
 /target/
-/.bootstrap/
-/.maven-cache/
 
 # IDE y sistema operativo
 /.idea/

@@ -82,7 +82,7 @@ Una base vacía muestra total cero. Un fallo de recarga conserva las cifras de l
 
 Los atajos respetan el bloqueo durante las operaciones; Recargar no sustituye un formulario abierto. En macOS, los atajos Ctrl usan la tecla de acceso directo del sistema, Cmd.
 
-## Paquete para presentar la aplicación
+## Distribución
 
 Con JDK 17 instalado, genera la distribución desde la raíz del proyecto:
 
@@ -145,4 +145,4 @@ Para compilar, ejecutar las pruebas y generar el JAR:
 
 En Linux o macOS, usa `sh ./mvnw verify`. Las pruebas cubren validación, filtros, estadísticas y persistencia con bases temporales, sin modificar la base personal.
 
-La verificación genera el JAR y el ZIP portable en `target`. Las comprobaciones gráficas de esta versión incluyen alta, edición, eliminación, estados, filtros, estadísticas, errores, tamaño mínimo y confirmación de cierre con bases aisladas. El paquete no incluye un entorno Java propio.
+La verificación genera el JAR y el ZIP portable en `target`.
