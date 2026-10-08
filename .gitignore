@@ -15,7 +15,7 @@
 .DS_Store
 Thumbs.db
 
-# Configuración privada, registros y futuras bases SQLite
+# Configuración privada, registros y bases SQLite
 .env
 .env.*
 !.env.example

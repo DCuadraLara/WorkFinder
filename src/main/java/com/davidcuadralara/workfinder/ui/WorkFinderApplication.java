@@ -34,7 +34,7 @@ public final class WorkFinderApplication extends Application {
                 "No se ha encontrado la hoja de estilos de WorkFinder.");
         scene.getStylesheets().add(stylesheet.toExternalForm());
 
-        stage.setTitle("WorkFinder · Candidaturas");
+        stage.setTitle("WorkFinder");
         stage.setMinWidth(1040);
         stage.setMinHeight(680);
         stage.setResizable(true);
@@ -42,9 +42,8 @@ public final class WorkFinderApplication extends Application {
         stage.setOnShown(event -> view.playEntrance());
         stage.setOnHidden(event -> view.finishEntrance());
         stage.setOnCloseRequest(event -> {
-            if (view.isBusy()) {
+            if (!view.requestClose()) {
                 event.consume();
-                view.closingWhileBusy();
             }
         });
         stage.show();

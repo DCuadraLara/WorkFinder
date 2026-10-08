@@ -1,0 +1,19 @@
+WorkFinder ${project.version}
+
+1. Instala Java 17 en el equipo donde vayas a abrir la aplicacion.
+2. Extrae todo el ZIP. Conserva workfinder.jar y las carpetas lib y javafx juntos.
+3. En Windows, abre WorkFinder.cmd. En Linux/macOS, usa sh workfinder.sh.
+
+No necesitas Maven ni conexion a Internet para usar este paquete.
+Las bibliotecas JavaFX son propias del sistema y arquitectura donde se compilo.
+El paquete generado en Windows se utiliza en Windows; para otro sistema,
+compila el proyecto en ese sistema y usa su ZIP.
+
+Tus candidaturas se guardan en .workfinder/workfinder.db dentro de tu carpeta
+de usuario, fuera de esta distribucion. Cierra la app antes de copiar esa base
+para realizar una copia de seguridad.
+
+Atajos: Ctrl+N (nueva), Ctrl+S (guardar), Ctrl+F (buscar), F5 (recargar).
+En macOS, los atajos Ctrl corresponden a Cmd. Esc oculta la busqueda.
+
+Codigo y documentacion: https://github.com/DCuadraLara/WorkFinder

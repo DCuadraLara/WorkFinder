@@ -58,7 +58,7 @@ public final class MainView {
     private final StackPane contentHost = new StackPane();
     private final Label formTitle = label("", "section-title");
     private final Label message = label("", "operation-message");
-    private final Label status = label("Abriendo el cuaderno…", "status-text");
+    private final Label status = label("Abriendo WorkFinder…", "status-text");
     private final Label emptyTitle = label("Cargando candidaturas…", "empty-title");
     private final Label emptyExplanation = label("Preparando la base de datos local.", "muted-text");
     private final CandidaturaService service;
@@ -97,7 +97,7 @@ public final class MainView {
         status.setId("status-text");
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
-        HBox footer = new HBox(16, label("Cuaderno local · SQLite", "pending-text"), spacer, status);
+        HBox footer = new HBox(16, spacer, status);
         footer.setAlignment(Pos.CENTER_LEFT);
         footer.getStyleClass().add("footer");
         root.setBottom(footer);
@@ -148,6 +148,30 @@ public final class MainView {
         showMessage("Espera a que termine la operación antes de cerrar la ventana.", false);
     }
 
+    /** Evita perder un formulario abierto o interrumpir una operación de guardado. */
+    public boolean requestClose() {
+        if (busy) {
+            closingWhileBusy();
+            return false;
+        }
+        if (form == null) return true;
+        ButtonType discard = new ButtonType("Cerrar sin guardar", ButtonBar.ButtonData.OK_DONE);
+        ButtonType back = new ButtonType("Volver al formulario", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert dialog = new Alert(Alert.AlertType.CONFIRMATION,
+                "Hay un formulario abierto. Si cierras WorkFinder, se perderán los cambios sin guardar.", discard, back);
+        dialog.setTitle("Cerrar WorkFinder");
+        dialog.setHeaderText("¿Cerrar sin guardar?");
+        dialog.initOwner(root.getScene().getWindow());
+        dialog.getDialogPane().getStyleClass().add("workfinder-root");
+        dialog.getDialogPane().getStylesheets().addAll(root.getScene().getStylesheets());
+        dialog.getDialogPane().setPrefWidth(520);
+        dialog.getDialogPane().setGraphic(null);
+        dialog.getDialogPane().lookupButton(discard).getStyleClass().add("danger-button");
+        ((Button) dialog.getDialogPane().lookupButton(discard)).setDefaultButton(false);
+        ((Button) dialog.getDialogPane().lookupButton(back)).setDefaultButton(true);
+        return dialog.showAndWait().orElse(back) == discard;
+    }
+
     public void close() {
         closed = true;
         entrance.finish();
@@ -162,12 +186,12 @@ public final class MainView {
             allCandidates.clear();
             allCandidates.addAll(loaded);
             refreshCandidates(null);
-            status.setText("Candidaturas cargadas desde SQLite.");
+            status.setText("Lista actualizada.");
             updateActions();
         }, error -> {
             summaryPanel.failedLoad(ready);
             if (!ready) {
-                emptyTitle.setText("No se pudo cargar el cuaderno.");
+                emptyTitle.setText("No se pudieron cargar las candidaturas.");
                 emptyExplanation.setText("Consulta el mensaje y pulsa Recargar para intentarlo de nuevo.");
             }
             showFailure(error);
@@ -182,8 +206,8 @@ public final class MainView {
                 label("Cuaderno de candidaturas", "brand-subtitle"));
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
-        Label phase = label("Prácticas y empleo", "header-caption");
-        HBox header = new HBox(16, brandMark, title, spacer, phase);
+        Label caption = label("Prácticas y empleo", "header-caption");
+        HBox header = new HBox(16, brandMark, title, spacer, caption);
         header.setAlignment(Pos.CENTER_LEFT);
         header.getStyleClass().add("header");
         return header;
@@ -304,7 +328,7 @@ public final class MainView {
         editButton.setId("editar-candidatura-button");
         deleteButton.setId("eliminar-candidatura-button");
         reloadButton.setId("recargar-button");
-        reloadButton.setTooltip(new Tooltip("Recargar las candidaturas desde SQLite · F5."));
+        reloadButton.setTooltip(new Tooltip("Actualizar la lista · F5."));
         addButton.setTooltip(new Tooltip("Añadir una candidatura · Ctrl+N."));
         editButton.setTooltip(new Tooltip("Consultar o editar la candidatura seleccionada."));
         deleteButton.setTooltip(new Tooltip("Eliminar la candidatura seleccionada con confirmación."));
@@ -396,7 +420,7 @@ public final class MainView {
                     .thenComparing(Comparator.comparingLong(Candidatura::getId).reversed()));
             closeForm();
             refreshCandidates(saved.getId());
-            status.setText(input.getId() == 0 ? "Candidatura guardada en SQLite." : "Cambios guardados en SQLite.");
+            status.setText(input.getId() == 0 ? "Candidatura guardada." : "Cambios guardados.");
             if (table.getItems().stream().noneMatch(c -> c.getId() == saved.getId())) {
                 showMessage("Guardada correctamente. Esta candidatura no coincide con la búsqueda o los filtros activos; pulsa la lupa y Limpiar para verla.", false);
             }
@@ -469,7 +493,7 @@ public final class MainView {
         execute(() -> { service.eliminar(selected.getId()); return selected.getId(); }, id -> {
             allCandidates.removeIf(c -> c.getId() == id);
             refreshCandidates(null);
-            status.setText("Candidatura eliminada de SQLite.");
+            status.setText("Candidatura eliminada.");
         }, this::showFailure, "Eliminando candidatura…");
     }
 
@@ -524,7 +548,7 @@ public final class MainView {
                 : "No se ha podido completar la operación. Tus datos en pantalla se conservan; vuelve a intentarlo.";
         showMessage(text, true);
         status.setText("La operación no se ha completado.");
-        System.getLogger(MainView.class.getName()).log(System.Logger.Level.ERROR, "Error al acceder al cuaderno", error);
+        System.getLogger(MainView.class.getName()).log(System.Logger.Level.ERROR, "Error al acceder a las candidaturas", error);
     }
 
     private void showMessage(String text, boolean error) {

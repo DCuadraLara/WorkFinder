@@ -1,4 +1,4 @@
-# WorkFinder
+# WorkFinder 1.0.0
 
 Aplicación de escritorio para organizar candidaturas a prácticas y empleo, desarrollada con **Java 17, JavaFX, Maven y SQLite**. Permite mantener en un mismo lugar las ofertas a las que te has presentado, sus condiciones y el avance de cada proceso.
 
@@ -15,6 +15,8 @@ Aplicación de escritorio para organizar candidaturas a prácticas y empleo, des
 Cada fila representa **una candidatura**. Puedes registrar varias para una misma empresa o puesto; cada una conserva su identificador y sus datos.
 
 ## Capturas
+
+Las capturas muestran datos de ejemplo.
 
 <details>
 <summary>Formulario de edición</summary>
@@ -36,7 +38,7 @@ Cada fila representa **una candidatura**. Puedes registrar varias para una misma
 
 Pulsa **Añadir candidatura** para abrir el formulario dentro de la ventana. Registra empresa, puesto, categoría profesional, estado, modalidad, ubicación, enlace de la oferta y fecha de envío. También puedes indicar si enviaste el CV y la carta de presentación, y guardar notas o condiciones de la oferta.
 
-Selecciona una fila para habilitar **Editar** y **Eliminar**. La edición permite consultar y modificar todos sus datos; Cancelar conserva la versión guardada. La eliminación solicita confirmación antes de borrar.
+Selecciona una fila para habilitar **Editar** y **Eliminar**. La edición permite consultar y modificar todos sus datos; Cancelar conserva la versión guardada. La eliminación solicita confirmación antes de borrar. Al cerrar la aplicación con un formulario abierto, puedes volver a él o confirmar el cierre sin guardar.
 
 El estado también se puede cambiar desde el selector de la propia tabla: Enviada, En revisión, Entrevista, Oferta, Rechazada o Retirada. Cada selección se guarda en SQLite. Si falla, se restaura el valor anterior y se muestra un mensaje.
 
@@ -80,7 +82,19 @@ Una base vacía muestra total cero. Un fallo de recarga conserva las cifras de l
 
 Los atajos respetan el bloqueo durante las operaciones; Recargar no sustituye un formulario abierto. En macOS, los atajos Ctrl usan la tecla de acceso directo del sistema, Cmd.
 
-## Requisitos y ejecución
+## Paquete para presentar la aplicación
+
+Con JDK 17 instalado, genera la distribución desde la raíz del proyecto:
+
+```powershell
+.\mvnw.cmd verify
+```
+
+Extrae **`target/workfinder-1.0.0-portable.zip`** y abre **`WorkFinder.cmd`**. Conserva el JAR y las carpetas `lib` y `javafx` juntos. El ZIP incluye las dependencias: para utilizarlo no necesitas Maven, un IDE ni conexión a Internet; sí necesitas Java 17.
+
+El paquete generado en Windows está preparado para Windows. Para Linux o macOS, compila el proyecto en ese sistema con `sh ./mvnw verify` y ejecuta `sh workfinder.sh` desde su ZIP extraído. La distribución y el lanzador se han comprobado en Windows; los otros sistemas no se han probado manualmente.
+
+## Ejecutar desde el código fuente
 
 Necesitas un **JDK 17** y conexión a Internet para descargar las dependencias la primera vez. El proyecto incluye Maven Wrapper; no requiere instalar Maven, el SDK de JavaFX ni un servidor de base de datos.
 
@@ -131,4 +145,4 @@ Para compilar, ejecutar las pruebas y generar el JAR:
 
 En Linux o macOS, usa `sh ./mvnw verify`. Las pruebas cubren validación, filtros, estadísticas y persistencia con bases temporales, sin modificar la base personal.
 
-El JAR se genera en `target`; no incluye un instalador ni JavaFX autónomo. Para abrir la aplicación con sus dependencias, utiliza `javafx:run`.
+La verificación genera el JAR y el ZIP portable en `target`. Las comprobaciones gráficas de esta versión incluyen alta, edición, eliminación, estados, filtros, estadísticas, errores, tamaño mínimo y confirmación de cierre con bases aisladas. El paquete no incluye un entorno Java propio.

@@ -150,7 +150,7 @@
 .footer { -fx-padding: 12 32 18 32; }
 .status-text { -fx-font-size: 12px; }
 
-/* Formulario de la fase 2, con errores junto a los campos. */
+/* Formulario con errores junto a los campos. */
 .candidatura-form { -fx-background-color: -wf-surface; -fx-border-color: -wf-border; -fx-padding: 18; }
 .form-scroll, .form-scroll > .viewport { -fx-background-color: transparent; }
 .form-scroll { -fx-padding: 0 8 0 0; -fx-background-insets: 0; }
